@@ -1,11 +1,12 @@
 :root{
   --bg:#05070d;--fg:#e8f0ff;--muted:#8fa3c7;--card:#0b1220cc;--line:#e8f0ff1f;
   --a:#2f7bff;--b:#00c8ff;--hdr:#05070dd9;
+  --farmasys-c1:#ffffff;--farmasys-c2:#d8e2ec;
   --fd:'Syne','Trebuchet MS',sans-serif;--fb:'Manrope','Segoe UI',sans-serif;
   color-scheme:dark;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
-:root[data-theme="light"]{--bg:#f3f7ff;--fg:#050a18;--muted:#4a5a7a;--card:#ffffffcc;--line:#050a181f;--a:#1456e0;--b:#0090d6;--hdr:#f3f7ffd9;color-scheme:light}
+:root[data-theme="light"]{--bg:#f3f7ff;--fg:#050a18;--muted:#4a5a7a;--card:#ffffffcc;--line:#050a181f;--a:#1456e0;--b:#0090d6;--hdr:#f3f7ffd9;--farmasys-c1:#1456e0;--farmasys-c2:#0090d6;color-scheme:light}
 html{height:auto;scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 1.05rem/1.7 var(--fb);overflow-x:hidden;transition:background .5s,color .5s}
@@ -97,6 +98,11 @@ h1 .ch:hover{color:var(--b);transform:translateY(-8px) rotate(-4deg)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem;perspective:1200px}
 .card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;transform-style:preserve-3d;transition:transform .25s ease-out,box-shadow .3s;will-change:transform}
 .card:hover{box-shadow:0 30px 60px -25px var(--a)}
+.card.card-falcon:hover{box-shadow:0 30px 60px -25px #ef444488}
+.card.card-farmasys .thumb::before,.card.card-farmasys .thumb::after{background:#0000001a}
+.card.card-farmasys:hover{box-shadow:0 30px 60px -25px rgba(255,255,255,.32)}
+:root[data-theme="light"] .card.card-farmasys .thumb::before,:root[data-theme="light"] .card.card-farmasys .thumb::after{background:#ffffff40}
+:root[data-theme="light"] .card.card-farmasys:hover{box-shadow:0 30px 60px -25px rgba(20,86,224,.4)}
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),#ffffff2e,transparent 60%);opacity:0;transition:opacity .3s}
 .card:hover::after{opacity:1}
 .thumb{height:180px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--c1),var(--c2))}
