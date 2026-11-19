@@ -14,7 +14,9 @@ const roles=[
 ];
 const skills=[['Lógica de Programação',100],['Python',90],['MySQL',85],['Java (Estudando)',75],['Git & GitHub',75],['HTML & CSS',70]];
 const projects=[
- ['Portfólio Pessoal & Repositório','Meu primeiro projeto publicado: repositório de código deste portfólio interativo, apresentando minha trajetória, estudos no Senac e metas.',['HTML5','CSS3','JavaScript','GitHub'],'#1d4ed8','#00c8ff','https://github.com/rafaelarcanjogarcia']
+ ['MPS Falcon Field','Sistema de informações e redes de contato da MPS Falcon Field, desenvolvido para centralizar dados e canais de comunicação da equipe.',['HTML','CSS','JavaScript'],'#ef4444','#991b1b','https://rafaelarcanjogarcia.github.io/mps-falcon-fiedpage/','card-falcon'],
+ ['FarmaSys','Sistema de gerenciamento farmacêutico desenvolvido com regras de negócio completas, persistência de dados e interface web.',['Java','MySQL','Spring Boot','HTML','CSS','JavaScript'],'var(--farmasys-c1)','var(--farmasys-c2)','https://github.com/rafaelarcanjogarcia/farmasys','card-farmasys'],
+ ['Portfólio Pessoal & Repositório','Repositório de código deste portfólio interativo, apresentando minha trajetória, estudos no Senac e metas.',['HTML5','CSS3','JavaScript','GitHub'],'#1d4ed8','#00c8ff','https://github.com/rafaelarcanjogarcia']
 ];
 
 /* ---------- nome letra a letra ---------- */
@@ -30,10 +32,10 @@ const nm=$('#name');const txt=nm.textContent;nm.textContent='';
   i+=del?-1:1;setTimeout(t,del?35:70)})();})();
 
 /* ---------- marquee, skills, projetos ---------- */
-const words=['Ciência da Computação','Java','Python','MySQL','Senac','Lógica 100%','Vestibular','Git & GitHub'];
+const words=['Ciência da Computação','Java','Spring Boot','Python','MySQL','Senac','Lógica 100%','Vestibular','Git & GitHub'];
 $('#track').innerHTML=[...words,...words].map(w=>`<span>${w}</span>`).join('');
 $('#bars').innerHTML=skills.map(([n,v],i)=>`<div class="bar rv" style="--d:${i*.08}s"><div class="top"><span>${n}</span><span>${v}%</span></div><div class="bg"><div class="fill" data-w="${v}"></div></div></div>`).join('');
-$('#grid').innerHTML=projects.map(([t,d,tg,c1,c2,link],i)=>`<a href="${link||'#'}" target="_blank" rel="noopener noreferrer" class="card rv" style="--d:${i*.1}s"><div class="thumb" style="--c1:${c1};--c2:${c2}"></div><div class="body"><h3>${t}</h3><p>${d}</p><div class="tags">${tg.map(x=>`<span>${x}</span>`).join('')}</div></div></a>`).join('');
+$('#grid').innerHTML=projects.map(([t,d,tg,c1,c2,link,cls],i)=>`<a href="${link||'#'}" target="_blank" rel="noopener noreferrer" class="card rv ${cls||''}" style="--d:${i*.1}s"><div class="thumb" style="--c1:${c1};--c2:${c2}"></div><div class="body"><h3>${t}</h3><p>${d}</p><div class="tags">${tg.map(x=>`<span>${x}</span>`).join('')}</div></div></a>`).join('');
 
 /* ---------- revelar ao rolar + barras + contadores ---------- */
 const count=el=>{const n=+el.dataset.n,s=el.dataset.s||'';if(reduce){el.textContent=n+s;return}
